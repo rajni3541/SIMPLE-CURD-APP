@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const learnerSchema =new mongoose.Schema({
-        learner_Name:{
+        learner_name:{
             type:String,
             required:true,
             min: 4,

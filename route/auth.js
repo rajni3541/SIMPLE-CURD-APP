@@ -1,15 +1,21 @@
 
-const express = require('express')
-const router =require('express').Router()
-const Collection =require('../controller/controller')
-const cors = require('cors')
-// const { Collection } = require('mongoose')
+const router = require('express').Router()
+const verify = require('./authVerify')
+const Collection = require('../controller/controller')
 
-router.post('/add-collections', collection.addProducts)
-router.delete('/delete-collection/:id', Collection.deleteCollection)
-router.put('/update-collection/:id', Collection.updateCollection)
-router.get('/register',Collection.signUp) 
+router.post('/register', Collection.signUp )
 
-router.get('/login',Collection.signIn)
+router.post('/login', Collection.logIn)
 
-module.exports= router
+router.get('/getAllUsers', verify, Collection.getAllUsers)
+
+
+// course
+
+
+router.post('/addCourse',verify, Collection.addCourse)
+
+router.get('/getCourse', verify, Collection.getCourse)
+
+
+module.exports = router
